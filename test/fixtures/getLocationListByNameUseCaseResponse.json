@@ -1,9 +1,23 @@
 {
     "locationEntityList": [
         {
-            "id": "1235",
-            "postal_code": "04013",
-            "city": "Gandía",
+            "id": "635006c43824a9c294adec35",
+            "postal_code": "48630",
+            "city": "Gandia",
+            "region": "Pais Vasco",
+            "province": "Vizcaya"
+        },
+        {
+            "id": "635006c53824a9c294adf78b",
+            "postal_code": "46700",
+            "city": "Gandia",
+            "region": "Comunidad Valenciana",
+            "province": "Valencia"
+        },
+        {
+            "id": "635006c53824a9c294adf78c",
+            "postal_code": "46701",
+            "city": "Gandia",
             "region": "Comunidad Valenciana",
             "province": "Valencia"
         }
@@ -11,6 +25,6 @@
     "pagination": {
         "page": 1,
         "totalPages": 1,
-        "totalResults": 1
+        "totalResults": 3
     }
 }

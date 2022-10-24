@@ -1,6 +1,6 @@
 export default function handler(req, res) {
     res.status(200).json({
-        "id": "1234",
+        "_id": "1234",
         "country_code": "ES",
         "postal_code": "04002",
         "place_name": "Almeria",

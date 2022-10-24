@@ -1,64 +1,68 @@
-export default function handler(req, res) {
-    const { query: { name } } = req
-    if (name) {
-        res.status(200).json(
-            {
-                "results": [{
-                    "id": "1235",
-                    "country_code": "ES",
-                    "postal_code": "04013",
-                    "place_name": "Gandía",
-                    "admin_name1": "Comunidad Valenciana",
-                    "admin_code1": "CV",
-                    "admin_name2": "Valencia",
-                    "admin_code2": "VA",
-                    "admin_name3": "Valencia",
-                    "admin_code3": "04013",
-                    "latitude": "36.8381",
-                    "longitude": "-2.4597",
-                    "accuracy": "4"
-                }],
-                "page": 1,
-                "total_pages": 1,
-                "total_results": 1
-            }
-        )
-    } else {
-        res.status(200).json(
-            {
-                "results": [{
-                    "id": "1234",
-                    "country_code": "ES",
-                    "postal_code": "04002",
-                    "place_name": "Almeria",
-                    "admin_name1": "Andalucia",
-                    "admin_code1": "AN",
-                    "admin_name2": "Almeria",
-                    "admin_code2": "AL",
-                    "admin_name3": "Almeria",
-                    "admin_code3": "04013",
-                    "latitude": "36.8381",
-                    "longitude": "-2.4597",
-                    "accuracy": "4"
-                }, {
-                    "id": "1235",
-                    "country_code": "ES",
-                    "postal_code": "04013",
-                    "place_name": "Gandía",
-                    "admin_name1": "Comunidad Valenciana",
-                    "admin_code1": "CV",
-                    "admin_name2": "Valencia",
-                    "admin_code2": "VA",
-                    "admin_name3": "Valencia",
-                    "admin_code3": "04013",
-                    "latitude": "36.8381",
-                    "longitude": "-2.4597",
-                    "accuracy": "4"
-                }],
-                "page": 1,
-                "total_pages": 1,
-                "total_results": 2
-            }
-        )
+import clientPromise from '../../lib/mongodb'
+
+export default async (req, res) => {
+    try {
+        const client = await clientPromise
+        const db = client.db('subastador')
+
+        const { query: { name, page = 1 } } = req
+        const paginate = async (page_size, page_num, cursor) => {
+            const skips = page_size * (page_num - 1)
+            const result = cursor.skip(skips).limit(page_size).toArray()
+            return result
+        }
+        const size = 10
+        const collection = await db.collection('locations')
+
+        if (name) {
+            const locations = await collection.aggregate([
+                {
+                    $search: {
+                        index: "autocomplete",
+                        compound: {
+                            must: [
+                                {
+                                    text: {
+                                        query: name,
+                                        path: 'place_name',
+                                        fuzzy: {
+                                            maxEdits: 1
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    $limit: 3
+                }
+            ]).toArray()
+
+            res.status(200).json(
+                {
+                    "results": [...locations],
+                    "page": 1,
+                    "total_pages": 1,
+                    "total_results": 3
+                }
+            )
+        } else {
+            const cursor = await collection.find({})
+            const total_pages = await collection.count() / size
+            const results = await paginate(size, page, cursor)
+
+            res.status(200).json(
+                {
+                    "results": [...results],
+                    "page": page,
+                    "total_pages": Math.round(total_pages),
+                    "total_results": results.length
+                }
+            )
+        }
+
+    } catch (e) {
+        console.error(e)
     }
 }
