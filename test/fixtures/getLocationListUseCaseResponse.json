@@ -1,0 +1,23 @@
+{
+    "locationEntityList": [
+        {
+            "id": "1234",
+            "postal_code": "04002",
+            "city": "Almeria",
+            "region": "Andalucia",
+            "province": "Almeria"
+        },
+        {
+            "id": "1235",
+            "postal_code": "04013",
+            "city": "Gandía",
+            "region": "Comunidad Valenciana",
+            "province": "Valencia"
+        }
+    ],
+    "pagination": {
+        "page": 1,
+        "totalPages": 1,
+        "totalResults": 2
+    }
+}

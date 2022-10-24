@@ -1,0 +1,16 @@
+{
+    "locationEntityList": [
+        {
+            "id": "1235",
+            "postal_code": "04013",
+            "city": "Gandía",
+            "region": "Comunidad Valenciana",
+            "province": "Valencia"
+        }
+    ],
+    "pagination": {
+        "page": 1,
+        "totalPages": 1,
+        "totalResults": 1
+    }
+}
