@@ -24,8 +24,8 @@ export class LocationListAPIToLocationListEntityMapper extends Mapper {
                 id: _id,
                 postal_code,
                 city: place_name,
-                region: admin_name1,
-                province: admin_name2
+                region: admin_name2,
+                province: admin_name1
             })
 
             return locationEntity

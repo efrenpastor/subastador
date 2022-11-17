@@ -26,7 +26,7 @@ describe('GetLocationListByNameUseCase', function () {
         stubedGet.restore()
     })
 
-    it('gets location list unfiltered', async function () {
+    it('gets locationList by locationName', async function () {
         const locationName = 'Gandía'
         const resolved = new Promise((r) => r({ DATA: getLocationListByNameUseCaseResponse }))
         stubedGet.returns(resolved)

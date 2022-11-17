@@ -1,25 +1,34 @@
 {
     "locationEntityList": [
         {
-            "id": "635006c43824a9c294adec35",
-            "postal_code": "48630",
             "city": "Gandia",
-            "region": "Pais Vasco",
-            "province": "Vizcaya"
+            "id": "637600d079068958e7241440",
+            "postal_code": [
+              "46701",
+              "46702",
+              "46728",
+              "46730"
+            ],
+            "province": "Valencia",
+            "region": "Comunitat Valenciana"
         },
         {
-            "id": "635006c53824a9c294adf78b",
-            "postal_code": "46700",
-            "city": "Gandia",
-            "region": "Comunidad Valenciana",
-            "province": "Valencia"
+            "city": "Palma de Gandía",
+            "id": "637600d079068958e7241477",
+            "postal_code": [
+              "46724"
+            ],
+            "province": "Valencia",
+            "region": "Comunitat Valenciana"
         },
         {
-            "id": "635006c53824a9c294adf78c",
-            "postal_code": "46701",
-            "city": "Gandia",
-            "region": "Comunidad Valenciana",
-            "province": "Valencia"
+            "city": "Real de Gandia, el",
+            "id": "637600d079068958e7241494",
+            "postal_code": [
+              "46727"
+            ],
+            "province": "Valencia",
+            "region": "Comunitat Valenciana"
         }
     ],
     "pagination": {
