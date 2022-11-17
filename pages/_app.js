@@ -1,8 +1,11 @@
+import { DomainContextProvider } from '../context/domain'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Component {...pageProps} />
+    <DomainContextProvider>
+      <Component {...pageProps} />
+    </DomainContextProvider>
   )
 }
 
