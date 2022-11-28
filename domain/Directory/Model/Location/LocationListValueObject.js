@@ -2,20 +2,11 @@ import { Model } from "../../../domain";
 import { PaginationValueObject } from "../PaginationValueObject";
 import { LocationEntity } from "./LocationEntity";
 
-export class LocationEntityList extends Model {
+export class LocationListValueObject extends Model {
     static create({ locationEntityList, pagination }) {
         const { page, totalPages, totalResults } = pagination
-        return new LocationEntityList({
-            locationEntityList: locationEntityList.map(entity => {
-                const { id, postal_code, city, region, province } = entity
-                return LocationEntity.create({
-                    id,
-                    postal_code,
-                    city,
-                    region,
-                    province
-                })
-            }),
+        return new LocationListValueObject({
+            locationEntityList: locationEntityList.map(entity => LocationEntity.create(entity)),
             pagination: PaginationValueObject.create({
                 page,
                 totalPages,

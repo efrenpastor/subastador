@@ -1,6 +1,6 @@
 import { Mapper } from "../../../domain"
 import { LocationEntity } from '../../Model/Location/LocationEntity'
-import { LocationEntityList } from "../../Model/Location/LocationListEntity"
+import { LocationListValueObject } from "../../Model/Location/LocationListValueObject"
 import { PaginationValueObject } from "../../Model/PaginationValueObject"
 
 export class LocationListAPIToLocationListEntityMapper extends Mapper {
@@ -37,7 +37,7 @@ export class LocationListAPIToLocationListEntityMapper extends Mapper {
             totalResults: total_results
         })
 
-        const locationEntityListAggregate = LocationEntityList.create({
+        const locationEntityListAggregate = LocationListValueObject.create({
             pagination: paginationValueObject.toJSON(),
             locationEntityList: locationEntityList.map(entity => entity.toJSON())
         })
