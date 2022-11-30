@@ -3,9 +3,9 @@ import { LocationEntity } from '../../Model/Location/LocationEntity'
 import { LocationListValueObject } from "../../Model/Location/LocationListValueObject"
 import { PaginationValueObject } from "../../Model/PaginationValueObject"
 
-export class LocationListAPIToLocationListEntityMapper extends Mapper {
+export class LocationListAPIToLocationListVOMapper extends Mapper {
     static create() {
-        return new LocationListAPIToLocationListEntityMapper()
+        return new LocationListAPIToLocationListVOMapper()
     }
 
     map(rawApiResponse) {

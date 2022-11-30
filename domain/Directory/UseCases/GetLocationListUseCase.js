@@ -19,8 +19,8 @@ export class GetLocationListUseCase extends UseCase {
 
     async execute() {
         try {
-            const locationListEntity = await this._repository.getLocationList()
-            return locationListEntity.toJSON()
+            const locationListVO = await this._repository.getLocationList()
+            return locationListVO.toJSON()
         } catch {
             return Promise.reject(
                 err instanceof DomainError ? err : GenericError.create(`[GetLocationsUseCase#execute] ${err.message}`)

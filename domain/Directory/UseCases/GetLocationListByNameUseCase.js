@@ -31,12 +31,12 @@ export class GetLocationListByNameUseCase extends UseCase {
             }
 
             const locationNameValueObject = LocationNameValueObject.create({ locationName })
-            const locationListEntity = await this._repository.getLocationListByName({
+            const locationListVO = await this._repository.getLocationListByName({
                 locationName: locationNameValueObject
             })
-            this._cache.set(cacheKey, locationListEntity)
+            this._cache.set(cacheKey, locationListVO)
 
-            return locationListEntity.toJSON()
+            return locationListVO.toJSON()
         } catch (err) {
             return Promise.reject(
                 err instanceof DomainError ? err : GenericError.create(`[GetLocationsUseCase#execute] ${err.message}`)

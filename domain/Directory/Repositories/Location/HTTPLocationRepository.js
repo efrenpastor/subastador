@@ -1,6 +1,6 @@
 import { AxiosFetcher } from '../../Fetchers/AxiosFetcher'
 import { LocationAPIToLocationEntityMapper } from '../../Mappers/Location/LocationAPIToLocationEntityMapper'
-import { LocationListAPIToLocationListEntityMapper } from '../../Mappers/Location/LocationListAPIToLocationListEntityMapper'
+import { LocationListAPIToLocationListVOMapper } from '../../Mappers/Location/LocationListAPIToLocationListVOMapper'
 import { LocationRepository } from './LocationRepository'
 
 export class HTTPLocationRepository extends LocationRepository {
@@ -9,17 +9,17 @@ export class HTTPLocationRepository extends LocationRepository {
 
     // Mappers
     _locationAPIToLocationEntityMapper
-    _locationListAPIToLocationListEntityMapper
+    _locationListAPIToLocationListVOMapper
 
     static create({ config }) {
         const fetcher = AxiosFetcher.create({ config })
         const locationAPIToLocationEntityMapper = LocationAPIToLocationEntityMapper.create()
-        const locationListAPIToLocationListEntityMapper = LocationListAPIToLocationListEntityMapper.create()
+        const locationListAPIToLocationListVOMapper = LocationListAPIToLocationListVOMapper.create()
         return new HTTPLocationRepository({
             fetcher,
             config,
             locationAPIToLocationEntityMapper,
-            locationListAPIToLocationListEntityMapper
+            locationListAPIToLocationListVOMapper
         })
     }
 
@@ -27,13 +27,13 @@ export class HTTPLocationRepository extends LocationRepository {
         fetcher,
         config,
         locationAPIToLocationEntityMapper,
-        locationListAPIToLocationListEntityMapper
+        locationListAPIToLocationListVOMapper
     }) {
         super()
         this._fetcher = fetcher
         this._config = config
         this._locationAPIToLocationEntityMapper = locationAPIToLocationEntityMapper
-        this._locationListAPIToLocationListEntityMapper = locationListAPIToLocationListEntityMapper
+        this._locationListAPIToLocationListVOMapper = locationListAPIToLocationListVOMapper
     }
 
     async getLocationList() {
@@ -42,7 +42,7 @@ export class HTTPLocationRepository extends LocationRepository {
             const endpoint = this._config.get('RESOURCES_URL').LOCATIONS
             const url = `${api}${endpoint}`
             const { data } = await this._fetcher.get(url)
-            return this._locationListAPIToLocationListEntityMapper.map(data)
+            return this._locationListAPIToLocationListVOMapper.map(data)
         } catch (err) {
             return Promise.reject(err)
         }
@@ -55,7 +55,7 @@ export class HTTPLocationRepository extends LocationRepository {
             const endpoint = this._config.get('RESOURCES_URL').LOCATIONS
             const url = `${api}${endpoint}?name=${locationNameValue}`
             const { data } = await this._fetcher.get(url)
-            return this._locationListAPIToLocationListEntityMapper.map(data)
+            return this._locationListAPIToLocationListVOMapper.map(data)
         } catch (err) {
             return Promise.reject(err)
         }
