@@ -8,11 +8,29 @@ export class LotAPIToLotEntityMapper extends Mapper {
     _authorityAPIToAuthorityEntityMapper
     _creditorAPIToCreditorEntityMapper
 
-    static create() {
-        this._auctionAPIToAuctionEntityMapper = AuctionAPIToAuctionEntityMapper.create()
-        this._authorityAPIToAuthorityEntityMapper = AuthorityAPIToAuthorityEntityMapper.create()
-        this._creditorAPIToCreditorEntityMapper = CreditorAPIToCreditorEntityMapper.create()
-        return new LotAPIToLotEntityMapper()
+    static create({ config }) {
+        const auctionAPIToAuctionEntityMapper = AuctionAPIToAuctionEntityMapper.create()
+        const authorityAPIToAuthorityEntityMapper = AuthorityAPIToAuthorityEntityMapper.create()
+        const creditorAPIToCreditorEntityMapper = CreditorAPIToCreditorEntityMapper.create()
+        return new LotAPIToLotEntityMapper({
+            config,
+            auctionAPIToAuctionEntityMapper,
+            authorityAPIToAuthorityEntityMapper,
+            creditorAPIToCreditorEntityMapper
+        })
+    }
+
+    constructor({
+        config,
+        auctionAPIToAuctionEntityMapper,
+        authorityAPIToAuthorityEntityMapper,
+        creditorAPIToCreditorEntityMapper
+    }) {
+        super()
+        this._config = config
+        this._auctionAPIToAuctionEntityMapper = auctionAPIToAuctionEntityMapper
+        this._authorityAPIToAuthorityEntityMapper = authorityAPIToAuthorityEntityMapper
+        this._creditorAPIToCreditorEntityMapper = creditorAPIToCreditorEntityMapper
     }
 
     map(rawAPIResponse) {
