@@ -1,7 +1,8 @@
 const BASE = {
     API_URL: 'http://localhost:3000/api',
     RESOURCES_URL: {
-        LOCATIONS: '/locations'
+        LOCATIONS: '/locations',
+        LOTS: '/lots'
     }
 }
 

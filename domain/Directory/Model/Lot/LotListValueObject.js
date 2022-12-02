@@ -2,10 +2,10 @@ import { Model } from "../../../domain";
 import { PaginationValueObject } from "../PaginationValueObject";
 import { LotEntity } from "./LotEntity";
 
-export class LotsListValueObject extends Model {
+export class LotListValueObject extends Model {
     static create({ lotsEntityList, pagination }) {
         const { page, totalPages, totalResults } = pagination
-        return new LotsListValueObject({
+        return new LotListValueObject({
             lotsEntityList: lotsEntityList.map(entity => LotEntity.create(entity)),
             pagination: PaginationValueObject.create({
                 page,

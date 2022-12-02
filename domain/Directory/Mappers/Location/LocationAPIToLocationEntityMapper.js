@@ -6,14 +6,14 @@ export class LocationAPIToLocationEntityMapper extends Mapper {
         return new LocationAPIToLocationEntityMapper()
     }
 
-    map(rawApiResponse) {
+    map(rawAPIResponse) {
         const {
             _id,
             postal_code,
             place_name,
             admin_name1,
             admin_name2
-        } = rawApiResponse
+        } = rawAPIResponse
 
         const locationEntity = LocationEntity.create({
             id: _id,  
