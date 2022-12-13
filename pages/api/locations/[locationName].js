@@ -8,7 +8,8 @@ export default async (req, res) => {
 
     const { query: { locationName }} = req
     const collection = await db.collection('locations')
-    const agg = { place_name: { $eq: locationName }}
+    const regex = new RegExp(locationName, 'i')
+    const agg = { place_name: {  $regex: regex }}
     const results = await collection.find(agg).toArray()
 
     res.status(200).json({
