@@ -67,8 +67,8 @@ export class HTTPLocationRepository extends LocationRepository {
             const api = this._config.get('API_URL')
             const endpoint = this._config.get('RESOURCES_URL').LOCATIONS
             const url = `${api}${endpoint}/${locationNameValue}`
-            const { data } = await this._fetcher.get(url)
-            return this._locationAPIToLocationEntityMapper.map(data)
+            const { data: { results } } = await this._fetcher.get(url)
+            return this._locationAPIToLocationEntityMapper.map(results[0])
         } catch (err) {
             return Promise.reject(err)
         }

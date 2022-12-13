@@ -49,13 +49,12 @@ export class HTTPLotRepository extends LotRepository {
         }
     }
 
-    async getLotListByPostalCodes({ locationPCS }) {
+    async getLotListByPostalCodes({ locationPCS, page = 1 }) {
         try {
-            console.log(locationPCS)
             const locationPCSValue = locationPCS.map(locationPC => locationPC.value())
             const api = this._config.get('API_URL')
             const endpoint = this._config.get('RESOURCES_URL').LOTS
-            const url = `${api}${endpoint}?pc=${locationPCSValue}`
+            const url = `${api}${endpoint}?pc=${locationPCSValue}&page=${page}`
             const { data } = await this._fetcher.get(url)
             return this._lotListAPIToLotListVOMapper.map(data)
         } catch (err) {

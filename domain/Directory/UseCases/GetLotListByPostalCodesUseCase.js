@@ -18,10 +18,10 @@ export class GetLotListByPostalCodesUseCase extends UseCase {
         this._repository = repository
     }
 
-    async execute({ locationPCS }) {
+    async execute({ locationPCS, page = 1 }) {
         try {
             const locationPCSValueObject = locationPCS.map(locationPC => LocationPCValueObject.create({ locationPC }))
-            const lotListValueObject = await this._repository.getLotListByPostalCodes({ locationPCS: locationPCSValueObject })
+            const lotListValueObject = await this._repository.getLotListByPostalCodes({ locationPCS: locationPCSValueObject, page })
             return lotListValueObject.toJSON()
         } catch (err) {
             return Promise.reject(
