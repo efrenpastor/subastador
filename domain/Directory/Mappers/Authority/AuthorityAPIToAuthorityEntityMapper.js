@@ -1,4 +1,5 @@
-import { AuthorityEntity } from "../../Model/Auction/AuthorityEntity"
+import { Mapper } from "../../../domain"
+import { AuthorityEntity } from "../../Model/Authority/AuthorityEntity"
 
 export class AuthorityAPIToAuthorityEntityMapper extends Mapper {
     static create() {

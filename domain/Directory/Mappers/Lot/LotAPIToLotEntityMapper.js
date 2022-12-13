@@ -2,18 +2,18 @@ import { LotEntity } from '../../Model/Lot/LotEntity'
 import { AuctionAPIToAuctionEntityMapper } from '../../Mappers/Auction/AuctionAPIToAuctionEntityMapper'
 import { AuthorityAPIToAuthorityEntityMapper } from '../../Mappers/Authority/AuthorityAPIToAuthorityEntityMapper'
 import { CreditorAPIToCreditorEntityMapper } from '../../Mappers/Creditor/CreditorAPIToCreditorEntityMapper'
+import { Mapper } from '../../../domain'
 
 export class LotAPIToLotEntityMapper extends Mapper {
     _auctionAPIToAuctionEntityMapper
     _authorityAPIToAuthorityEntityMapper
     _creditorAPIToCreditorEntityMapper
 
-    static create({ config }) {
+    static create() {
         const auctionAPIToAuctionEntityMapper = AuctionAPIToAuctionEntityMapper.create()
         const authorityAPIToAuthorityEntityMapper = AuthorityAPIToAuthorityEntityMapper.create()
         const creditorAPIToCreditorEntityMapper = CreditorAPIToCreditorEntityMapper.create()
         return new LotAPIToLotEntityMapper({
-            config,
             auctionAPIToAuctionEntityMapper,
             authorityAPIToAuthorityEntityMapper,
             creditorAPIToCreditorEntityMapper
@@ -21,13 +21,11 @@ export class LotAPIToLotEntityMapper extends Mapper {
     }
 
     constructor({
-        config,
         auctionAPIToAuctionEntityMapper,
         authorityAPIToAuthorityEntityMapper,
         creditorAPIToCreditorEntityMapper
     }) {
         super()
-        this._config = config
         this._auctionAPIToAuctionEntityMapper = auctionAPIToAuctionEntityMapper
         this._authorityAPIToAuthorityEntityMapper = authorityAPIToAuthorityEntityMapper
         this._creditorAPIToCreditorEntityMapper = creditorAPIToCreditorEntityMapper

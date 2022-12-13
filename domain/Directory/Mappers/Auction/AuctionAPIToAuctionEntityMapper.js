@@ -1,3 +1,4 @@
+import { Mapper } from "../../../domain"
 import { AuctionEntity } from "../../Model/Auction/AuctionEntity"
 
 export class AuctionAPIToAuctionEntityMapper extends Mapper {

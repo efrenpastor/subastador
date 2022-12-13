@@ -1,6 +1,7 @@
 import { PaginationValueObject } from '../../Model/PaginationValueObject'
 import { LotListValueObject } from '../../Model/Lot/LotListValueObject'
 import { LotAPIToLotEntityMapper } from './LotAPIToLotEntityMapper'
+import { Mapper } from '../../../domain'
 
 export class LotListAPIToLotListVOMapper extends Mapper {
     _lotAPIToLotEntityMapper
@@ -25,7 +26,7 @@ export class LotListAPIToLotListVOMapper extends Mapper {
         })
         const lotEntityListAggregate = LotListValueObject.create({
             pagination: paginationValueObject.toJSON(),
-            lotEntityList: lotEntityList.map(entity => entity.toJSON())
+            lotsEntityList: lotEntityList.map(entity => entity.toJSON())
         })
 
         return lotEntityListAggregate

@@ -5,7 +5,8 @@ const interOP = (fn, name) => () => fn().then((mod) => mod[name])
 const UseCases = {
     GetLocationByNameUseCase: interOP(() => import('./Directory/UseCases/GetLocationByNameUseCase'), 'GetLocationByNameUseCase'),
     GetLocationListUseCase: interOP(() => import('./Directory/UseCases/GetLocationListUseCase'), 'GetLocationListUseCase'),
-    GetLocationListByNameUseCase: interOP(() => import('./Directory/UseCases/GetLocationListByNameUseCase'), 'GetLocationListByNameUseCase')
+    GetLocationListByNameUseCase: interOP(() => import('./Directory/UseCases/GetLocationListByNameUseCase'), 'GetLocationListByNameUseCase'),
+    GetLotListByPostalCodeUseCase: interOP(() => import('./Directory/UseCases/GetLotListByPostalCodeUseCase'), 'GetLotListByPostalCodeUseCase')
 }
 
 export class Domain {
@@ -37,6 +38,10 @@ export class Domain {
 
     get GetLocationListByNameUseCase() {
         return this._getter('GetLocationListByNameUseCase', this._cache)
+    }
+
+    get GetLotListByPostalCodeUseCase() {
+        return this._getter('GetLotListByPostalCodeUseCase', this._cache)
     }
 
     _getter(name, cache) {

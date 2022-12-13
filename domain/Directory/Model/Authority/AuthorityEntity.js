@@ -1,3 +1,5 @@
+import { Model } from "../../../domain"
+
 export class AuthorityEntity extends Model {
     static create({
         code,
@@ -35,27 +37,27 @@ export class AuthorityEntity extends Model {
     }
 
     code() {
-        return this._code
+        return this._code || null
     }
 
     description() {
-        return this._description._code
+        return this._description._code || null
     }
 
     address() {
-        return this._address._code
+        return this._address._code || null
     }
 
     phone() {
-        return this._phone._code
+        return this._phone._code || null
     }
 
     fax() {
-        return this._fax._code
+        return this._fax._code || null
     }
 
     email() {
-        return this._email._code
+        return this._email._code || null
     }
 
     toJSON() {

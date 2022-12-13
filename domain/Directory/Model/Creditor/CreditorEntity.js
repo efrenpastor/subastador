@@ -1,3 +1,5 @@
+import { Model } from "../../../domain"
+
 export class CreditorEntity extends Model {
     static create({
         name,
@@ -35,27 +37,27 @@ export class CreditorEntity extends Model {
     }
 
     name() {
-        return this._name
+        return this._name || null
     }
 
     nif() {
-        return this._nif
+        return this._nif || null
     }
 
     address() {
-        return this._address
+        return this._address || null
     }
 
     locality() {
-        return this._locality
+        return this._locality || null
     }
 
     province() {
-        return this._province
+        return this._province || null
     }
 
     country() {
-        return this._country
+        return this._country || null
     }
 
     toJSON() {

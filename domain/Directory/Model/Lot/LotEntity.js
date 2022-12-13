@@ -1,3 +1,8 @@
+import { Model } from "../../../domain";
+import { AuctionEntity } from "../Auction/AuctionEntity";
+import { AuthorityEntity } from "../Authority/AuthorityEntity";
+import { CreditorEntity } from "../Creditor/CreditorEntity";
+
 export class LotEntity extends Model {
     static create({
         id,
@@ -71,71 +76,74 @@ export class LotEntity extends Model {
     }
 
     id() {
-        return this._id
+        return this._id || null
     }
 
     source() {
-        return this._source
+        return this._source || null
     }
 
     descripcion() {
-        return this._descripcion
+        return this._descripcion || null
     }
 
     address() {
-        return this._address
+        return this._address || null
     }
 
     postal_code() {
-        return this._postal_code
+        return this._postal_code || null
     }
 
     locality() {
-        return this._locality
+        return this._locality || null
     }
 
     province() {
-        return this._province
+        return this._province || null
     }
 
     main_residence() {
-        return this._main_residence
+        return this._main_residence || null
     }
 
     ownership() {
-        return this._ownership
+        return this._ownership || null
     }
 
     visitable() {
-        return this._visitable
+        return this._visitable || null
     }
 
     bid() {
-        return this._bid
+        return this._bid || null
     }
 
     category() {
-        return this._category
+        return this._category || null
     }
 
     auction() {
-        return this._auction
+        const auction = this._auction instanceof AuctionEntity ? this._auction.toJSON() : this._auction
+        return auction || null
     }
 
     authority() {
-        return this._authority
+        const authority = this._authority instanceof AuthorityEntity ? this._authority.toJSON() : this._authority
+        return authority || null
     }
 
     creditor() {
-        return this._creditor
+        const creditor = this._creditor instanceof CreditorEntity ? this._creditor.toJSON() : this._creditor
+        return creditor || null
     }
 
     toJSON() {
         return {
             id: this.id(),
             source: this.source(),
-            descripcion: this.descripcion.source(),
-            address: this.address.source(),
+            descripcion: this.descripcion(),
+            address: this.address(),
             postal_code: this.postal_code(),
             locality: this.locality(),
             province: this.province(),
@@ -144,9 +152,9 @@ export class LotEntity extends Model {
             visitable: this.visitable(),
             bid: this.bid(),
             category: this.category(),
-            auction: this.auction().toJSON(),
-            authority: this.authority().toJSON(),
-            creditor: this.creditor().toJSON(),
+            auction: this.auction(),
+            authority: this.authority(),
+            creditor: this.creditor(),
         }
     }
 }

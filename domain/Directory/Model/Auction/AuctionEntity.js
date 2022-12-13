@@ -1,3 +1,5 @@
+import { Model } from "../../../domain"
+
 export class AuctionEntity extends Model {
     static create({
         id,
@@ -87,79 +89,79 @@ export class AuctionEntity extends Model {
     }
 
     id() {
-        return this._id
+        return this._id || null
     }
 
     url() {
-        return this._url
+        return this._url || null
     }
 
     status() {
-        return this._status
+        return this._status || null
     }
 
     end_confirm() {
-        return this._end_confirm
+        return this._end_confirm || null
     }
 
     url_boe() {
-        return this._url_boe
+        return this._url_boe || null
     }
 
     type() {
-        return this._type
+        return this._type || null
     }
 
     account_record() {
-        return this._account_record
+        return this._account_record || null
     }
 
     start_date() {
-        return this._start_date
+        return this._start_date || null
     }
 
     end_date() {
-        return this._end_date
+        return this._end_date || null
     }
 
     amunt_claimed() {
-        return this._amunt_claimed
+        return this._amunt_claimed || null
     }
 
     num_lots() {
-        return this._num_lots
+        return this._num_lots || null
     }
 
     id_boe() {
-        return this._id_boe
+        return this._id_boe || null
     }
 
     auction_value() {
-        return this._auction_value
+        return this._auction_value || null
     }
 
     valuation() {
-        return this._valuation
+        return this._valuation || null
     }
 
     min_bid() {
-        return this._min_bid
+        return this._min_bid || null
     }
 
     interbidding() {
-        return this._interbidding
+        return this._interbidding || null
     }
 
     deposit() {
-        return this._deposit
+        return this._deposit || null
     }
 
     postal_code() {
-        return this._postal_code
+        return this._postal_code || null
     }
 
     city() {
-        return this._city
+        return this._city || null
     }
 
 

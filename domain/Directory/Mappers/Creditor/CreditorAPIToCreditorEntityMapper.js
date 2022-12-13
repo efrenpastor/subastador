@@ -1,4 +1,5 @@
-import { CreditorEntity } from "../../Model/Auction/CreditorEntity"
+import { Mapper } from "../../../domain"
+import { CreditorEntity } from "../../Model/Creditor/CreditorEntity"
 
 export class CreditorAPIToCreditorEntityMapper extends Mapper {
     static create() {
