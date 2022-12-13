@@ -35,7 +35,7 @@ export class LotAPIToLotEntityMapper extends Mapper {
         const {
             id,
             source,
-            descripcion,
+            description,
             address,
             postal_code,
             locality,
@@ -56,7 +56,7 @@ export class LotAPIToLotEntityMapper extends Mapper {
         return LotEntity.create({
             id,
             source,
-            descripcion,
+            description,
             address,
             postal_code,
             locality,

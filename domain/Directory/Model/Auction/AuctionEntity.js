@@ -89,79 +89,79 @@ export class AuctionEntity extends Model {
     }
 
     id() {
-        return this._id || null
+        return typeof this._id !== 'undefined' ? this._id : null
     }
 
     url() {
-        return this._url || null
+        return typeof this._url !== 'undefined' ? this._url : null
     }
 
     status() {
-        return this._status || null
+        return typeof this._status !== 'undefined' ? this._status : null
     }
 
     end_confirm() {
-        return this._end_confirm || null
+        return typeof this._end_confirm !== 'undefined' ? this._end_confirm : null
     }
 
     url_boe() {
-        return this._url_boe || null
+        return typeof this._url_boe !== 'undefined' ? this._url_boe : null
     }
 
     type() {
-        return this._type || null
+        return typeof this._type !== 'undefined' ? this._type : null
     }
 
     account_record() {
-        return this._account_record || null
+        return typeof this._account_record !== 'undefined' ? this._account_record : null
     }
 
     start_date() {
-        return this._start_date || null
+        return typeof this._start_date !== 'undefined' ? this._start_date : null
     }
 
     end_date() {
-        return this._end_date || null
+        return typeof this._end_date !== 'undefined' ? this._end_date : null
     }
 
     amunt_claimed() {
-        return this._amunt_claimed || null
+        return typeof this._amunt_claimed !== 'undefined' ? this._amunt_claimed : null
     }
 
     num_lots() {
-        return this._num_lots || null
+        return typeof this._num_lots !== 'undefined' ? this._num_lots : null
     }
 
     id_boe() {
-        return this._id_boe || null
+        return typeof this._id_boe !== 'undefined' ? this._id_boe : null
     }
 
     auction_value() {
-        return this._auction_value || null
+        return typeof this._auction_value !== 'undefined' ? this._auction_value : null
     }
 
     valuation() {
-        return this._valuation || null
+        return typeof this._valuation !== 'undefined' ? this._valuation : null
     }
 
     min_bid() {
-        return this._min_bid || null
+        return typeof this._min_bid !== 'undefined' ? this._min_bid : null
     }
 
     interbidding() {
-        return this._interbidding || null
+        return typeof this._interbidding !== 'undefined' ? this._interbidding : null
     }
 
     deposit() {
-        return this._deposit || null
+        return typeof this._deposit !== 'undefined' ? this._deposit : null
     }
 
     postal_code() {
-        return this._postal_code || null
+        return typeof this._postal_code !== 'undefined' ? this._postal_code : null
     }
 
     city() {
-        return this._city || null
+        return typeof this._city !== 'undefined' ? this._city : null
     }
 
 

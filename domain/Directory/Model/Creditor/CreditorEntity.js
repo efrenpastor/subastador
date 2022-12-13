@@ -37,27 +37,27 @@ export class CreditorEntity extends Model {
     }
 
     name() {
-        return this._name || null
+        return typeof this._name !== 'undefined' ? this._name : null
     }
 
     nif() {
-        return this._nif || null
+        return typeof this._nif !== 'undefined' ? this._nif : null
     }
 
     address() {
-        return this._address || null
+        return typeof this._address !== 'undefined' ? this._address : null
     }
 
     locality() {
-        return this._locality || null
+        return typeof this._locality !== 'undefined' ? this._locality : null
     }
 
     province() {
-        return this._province || null
+        return typeof this._province !== 'undefined' ? this._province : null
     }
 
     country() {
-        return this._country || null
+        return typeof this._country !== 'undefined' ? this._country : null
     }
 
     toJSON() {

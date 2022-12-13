@@ -7,7 +7,7 @@ export class LotEntity extends Model {
     static create({
         id,
         source,
-        descripcion,
+        description,
         address,
         postal_code,
         locality,
@@ -24,7 +24,7 @@ export class LotEntity extends Model {
         return new LotEntity({
             id,
             source,
-            descripcion,
+            description,
             address,
             postal_code,
             locality,
@@ -43,7 +43,7 @@ export class LotEntity extends Model {
     constructor({
         id,
         source,
-        descripcion,
+        description,
         address,
         postal_code,
         locality,
@@ -60,7 +60,7 @@ export class LotEntity extends Model {
         super()
         this._id = id
         this._source = source
-        this._descripcion = descripcion
+        this._description = description
         this._address = address
         this._postal_code = postal_code
         this._locality = locality
@@ -76,73 +76,73 @@ export class LotEntity extends Model {
     }
 
     id() {
-        return this._id || null
+        return typeof this._id !== 'undefined' ? this._id : null
     }
 
     source() {
-        return this._source || null
+        return typeof this._source !== 'undefined' ? this._source : null
     }
 
-    descripcion() {
-        return this._descripcion || null
+    description() {
+        return typeof this._description !== 'undefined' ? this._description : null
     }
 
     address() {
-        return this._address || null
+        return typeof this._address !== 'undefined' ? this._address : null
     }
 
     postal_code() {
-        return this._postal_code || null
+        return typeof this._postal_code !== 'undefined' ? this._postal_code : null
     }
 
     locality() {
-        return this._locality || null
+        return typeof this._locality !== 'undefined' ? this._locality : null
     }
 
     province() {
-        return this._province || null
+        return typeof this._province !== 'undefined' ? this._province : null
     }
 
     main_residence() {
-        return this._main_residence || null
+        return typeof this._main_residence !== 'undefined' ? this._main_residence : null
     }
 
     ownership() {
-        return this._ownership || null
+        return typeof this._ownership !== 'undefined' ? this._ownership : null
     }
 
     visitable() {
-        return this._visitable || null
+        return typeof this._visitable !== 'undefined' ? this._visitable : null
     }
 
     bid() {
-        return this._bid || null
+        return typeof this._bid !== 'undefined' ? this._bid : null
     }
 
     category() {
-        return this._category || null
+        return typeof this._category !== 'undefined' ? this._category : null
     }
 
     auction() {
         const auction = this._auction instanceof AuctionEntity ? this._auction.toJSON() : this._auction
-        return auction || null
+        return typeof auction !== 'undefined' ? auction : null
     }
 
     authority() {
         const authority = this._authority instanceof AuthorityEntity ? this._authority.toJSON() : this._authority
-        return authority || null
+        return typeof authority !== 'undefined' ? authority : null
     }
 
     creditor() {
         const creditor = this._creditor instanceof CreditorEntity ? this._creditor.toJSON() : this._creditor
-        return creditor || null
+        return typeof creditor !== 'undefined' ? creditor : null
     }
 
     toJSON() {
         return {
             id: this.id(),
             source: this.source(),
-            descripcion: this.descripcion(),
+            description: this.description(),
             address: this.address(),
             postal_code: this.postal_code(),
             locality: this.locality(),

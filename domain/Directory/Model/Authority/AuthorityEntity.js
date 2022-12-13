@@ -37,27 +37,27 @@ export class AuthorityEntity extends Model {
     }
 
     code() {
-        return this._code || null
+        return typeof this._code !== 'undefined' ? this._code : null
     }
 
     description() {
-        return this._description._code || null
+        return typeof this._description !== 'undefined' ? this._description : null
     }
 
     address() {
-        return this._address._code || null
+        return typeof this._address !== 'undefined' ? this._address : null
     }
 
     phone() {
-        return this._phone._code || null
+        return typeof this._phone !== 'undefined' ? this._phone : null
     }
 
     fax() {
-        return this._fax._code || null
+        return typeof this._fax !== 'undefined' ? this._fax : null
     }
 
     email() {
-        return this._email._code || null
+        return typeof this._email !== 'undefined' ? this._email : null
     }
 
     toJSON() {
