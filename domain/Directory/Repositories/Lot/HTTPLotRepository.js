@@ -48,4 +48,18 @@ export class HTTPLotRepository extends LotRepository {
             return Promise.reject(err)
         }
     }
+
+    async getLotListByPostalCodes({ locationPCS }) {
+        try {
+            console.log(locationPCS)
+            const locationPCSValue = locationPCS.map(locationPC => locationPC.value())
+            const api = this._config.get('API_URL')
+            const endpoint = this._config.get('RESOURCES_URL').LOTS
+            const url = `${api}${endpoint}?pc=${locationPCSValue}`
+            const { data } = await this._fetcher.get(url)
+            return this._lotListAPIToLotListVOMapper.map(data)
+        } catch (err) {
+            return Promise.reject(err)
+        }
+    }
 }

@@ -16,7 +16,7 @@ export default async (req, res) => {
     const collection = await db.collection('lots')
 
     if (pc) {
-      const agg = { postal_code : { $eq : pc } }
+      const agg = { postal_code : { $in : pc.split(',') } }
       const cursor = await collection.find(agg)
       const total_pages = await cursor.count() / size
       const results = await paginate(size, page, cursor)

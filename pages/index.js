@@ -21,8 +21,9 @@ export default function Home({ lots }) {
 
 export async function getServerSideProps(context) {
   const domain = Domain.create()
-  const locationPC = '08016'
-  const { lotsEntityList } = await domain.GetLotListByPostalCodeUseCase.execute({ locationPC })
+  const locationName = 'Barcelona'
+  const { postal_code } = await domain.GetLocationByNameUseCase.execute({ locationName })
+  const { lotsEntityList } = await domain.GetLotListByPostalCodesUseCase.execute({ locationPCS: postal_code })
   return {
     props: {
       lots: lotsEntityList
